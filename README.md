@@ -8,6 +8,17 @@ Minimalistic `zsh` theme inspired by the old-fashioned hobbies.
 
 ## Installation
 
+Just copy the [`sobole.zsh-theme`](/sobole.zsh-theme) to your `~/.oh-my-zsh/custom/themes/` folder.
+
+This set of commands will probably do what you want:
+
+```shell
+git clone https://github.com/sobolevn/sobole-zsh-theme.git
+ln -s $PWD/sobole-zsh-theme/sobole.zsh-theme ~/.oh-my-zsh/custom/themes/sobole.zsh-theme
+```
+
+Here's the [official docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#overriding-and-adding-themes) on how to do that.
+
 
 ## References
 
