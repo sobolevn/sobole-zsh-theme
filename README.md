@@ -5,6 +5,8 @@ Minimalistic `zsh` theme inspired by the old-fashioned hobbies.
 
 ## Showcase
 
+![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcase.gif)
+
 
 ## Installation
 
@@ -18,6 +20,16 @@ ln -s $PWD/sobole-zsh-theme/sobole.zsh-theme ~/.oh-my-zsh/custom/themes/sobole.z
 ```
 
 Here's the [official docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Customization#overriding-and-adding-themes) on how to do that.
+
+
+## Features
+
+- `virtualenv`
+- `git`
+- `ls`
+- Error codes
+- `grep`
+- Different users
 
 
 ## References
