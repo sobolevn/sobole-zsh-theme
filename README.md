@@ -7,6 +7,8 @@ Minimalistic `zsh` theme inspired by the old-fashioned hobbies.
 
 ![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/showcase.gif)
 
+There are multiple examples provided in the [showcases directory](/showcases).
+
 
 ## Installation
 
@@ -37,7 +39,14 @@ This theme supports several configuration options, which are provided as `env` v
 
 ![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/user-showcase.png)
 
-`$DEFAULT_COLOR_MODE` - this setting sets the color mode: `white` or `dark`, currently #WIP
+
+## Fonts
+
+You can choose any font that prints unicode symbols. In the examples `Menlo Regular` is used.
+
+You can install it with: `brew cask install font-menlo-for-powerline`. Or download it [here](https://github.com/hbin/top-programming-fonts/blob/master/Menlo-Regular.ttf).
+
+And then configure your terminal's `font` setting.
 
 
 ## References
