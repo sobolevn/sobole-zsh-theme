@@ -1,6 +1,6 @@
 # sobole
 
-Minimalistic `zsh` theme inspired by the old-fashioned hobbies.
+Minimalistic `zsh` theme inspired by the old-fashioned hobbies. Works well on a light background.
 
 
 ## Showcase
@@ -11,6 +11,16 @@ There are multiple examples provided in the [showcases directory](/showcases).
 
 
 ## Installation
+
+### antigen
+
+If you're using [`antigen`](https://github.com/zsh-users/antigen), you can test these themes in a running `zsh` with `antigen theme sobolevn/sobole-zsh-theme`.
+
+### zgen
+
+If you're using `zgen`, add them to your `init.zsh` with `zgen load sobolevn/sobole-zsh-theme`.
+
+### Manual
 
 Just copy the [`sobole.zsh-theme`](/sobole.zsh-theme) to your `~/.oh-my-zsh/custom/themes/` folder.
 
