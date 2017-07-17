@@ -38,11 +38,11 @@ function current_dir() {
 }
 
 function user_info() {
-  if [[ ! -z "$DEFAULT_USER" ]] && [[ "$USER" != "$DEFAULT_USER" ]]; then
-    # This only works if `$DEFAULT_USER` is not empty.
+  if [[ ! -z "$SOBOLE_DEFAULT_USER" ]] && [[ "$USER" != "$SOBOLE_DEFAULT_USER" ]]; then
+    # This only works if `$SOBOLE_DEFAULT_USER` is not empty.
     # So, when you log in as other user, using `su` for example,
     # your shell tells you who you are. Otherwise it stays silent.
-    # You should set `$DEFAULT_USER` somewhere in your `.zshrc`:
+    # You should set `$SOBOLE_DEFAULT_USER` somewhere in your `.zshrc`:
     echo "@$USER "
   fi
 }
@@ -104,3 +104,15 @@ export GREP_OPTIONS='--color=auto'
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b%{$reset_color%}"
+
+# ----------------------------------------------------------------------------
+# zsh-syntax-highlighting tweaks
+# It will only take effect if zsh-syntax-highlighting
+# is installed, otherwise it does nothing.
+# ----------------------------------------------------------------------------
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+# Disable strings highlighting:
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='none'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='none'
