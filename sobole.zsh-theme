@@ -107,12 +107,16 @@ zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b%{$reset_color%
 
 # ----------------------------------------------------------------------------
 # zsh-syntax-highlighting tweaks
-# It will only take effect if zsh-syntax-highlighting
+# This setting works only unless `$SOBOLE_DONOTTOUCH_HIGHLIGHTING`
+# is set. Any value is fine. Set to `true`, for example.
+# Anyway, it will only take effect if `zsh-syntax-highlighting`
 # is installed, otherwise it does nothing.
 # ----------------------------------------------------------------------------
 
-typeset -A ZSH_HIGHLIGHT_STYLES
+if [[ -z "$SOBOLE_DONOTTOUCH_HIGHLIGHTING" ]]; then
+  typeset -A ZSH_HIGHLIGHT_STYLES
 
-# Disable strings highlighting:
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='none'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='none'
+  # Disable strings highlighting:
+  ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='none'
+  ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='none'
+fi

@@ -45,9 +45,13 @@ Here's the [official docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Custom
 
 This theme supports several configuration options, which are provided as `env` variables:
 
-`$DEFAULT_USER` - this options sets how the user is displayed. User is not displayed until it equals `$DEFAULT_USER`, but imagine you executed `sudo su - admin`, that's how it will look like:
+`$SOBOLE_DEFAULT_USER` - this options sets how the user is displayed. User is not displayed until it equals `$SOBOLE_DEFAULT_USER`, but imagine you executed `sudo su - admin`, that's how it will look like:
 
-![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/user-showcase.png)
+![sobole-user-showcase](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/user-showcase.png)
+
+`$SOBOLE_DONOTTOUCH_HIGHLIGHTING` - tweaks `zsh-syntax-highlighting`. If it is installed, modifies string colors, some other minor things. Enabled by default. Set it to `false` if you do not want these tweaks, that's how it looks like:
+
+![sobole-syntax-highlighting-showcase](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/highlighting-tweaks.png)
 
 
 ## Fonts
@@ -56,7 +60,7 @@ You can choose any font that prints unicode symbols. In the examples `Menlo Regu
 
 You can install it with: `brew cask install font-menlo-for-powerline`. Or download it [here](https://github.com/hbin/top-programming-fonts/blob/master/Menlo-Regular.ttf).
 
-And then configure your terminal's `font` setting.
+And then [configure](http://osxdaily.com/2011/09/02/use-any-font-in-the-mac-os-x-lion-terminal/) your terminal's `font` setting.
 
 
 ## References
