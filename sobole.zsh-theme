@@ -12,33 +12,74 @@
 
 if [[ "$USER" == "root" ]]; then
   CARETCOLOR="red"
+elif [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
+  CARETCOLOR="white"
 else
   CARETCOLOR="black"
 fi
 
 PROMPT='
-$(current_venv)$(user_info)$(current_dir) $(git_prompt_info)
-%{$fg[$CARETCOLOR]%}»%{$resetcolor%} '
+$(current_venv)$(user_info)$(current_dir) $(vcs_prompt_info)
+$(current_caret) '
 
-PROMPT2='%{$fg[$CARETCOLOR]%}.%{$reset_color%} '
+PROMPT2='. '
 
-RPROMPT='%{$(echotc UP 1)%} $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
+RPROMPT='%{$(echotc UP 1)%} $(vcs_status) ${return_status}%{$(echotc DO 1)%}'
 
-local _current_dir="%{$fg_bold[blue]%}%3~%{$reset_color%} "
-local _return_status="%(?..%{$fg[red]%}%? ⚡%{$reset_color%})%{$reset_color%}"
+function current_caret {
+  # This function sets caret color and sign
+  # based on theme and privileges.
+  if [[ "$USER" == "root" ]]; then
+    CARET_COLOR="red"
+    CARET_SIGN="$"
+  else
+    CARET_SIGN="»"
 
-function current_dir() {
+    if [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
+      CARET_COLOR="white"
+    else
+      CARET_COLOR="black"
+    fi
+  fi
+
+  echo "%{$fg[$CARET_COLOR]%}$CARET_SIGN%{$reset_color%}"
+}
+
+function vcs_prompt_info {
+  git_prompt_info
+}
+
+function vcs_status {
+  git_prompt_status
+}
+
+function return_status {
+  # Sets the visible status for previous command.
+  echo "%(?..%{$fg[red]%}%? ⚡%{$reset_color%})"
+}
+
+function current_dir {
   # Settings up current directory and settings max width for it:
   local _max_pwd_length="65"
-  if [[ $(echo -n $PWD | wc -c) -gt ${_max_pwd_length} ]]; then
-    echo "%{$fg_bold[blue]%}%-2~ ... %3~%{$reset_color%} "
+  local color
+
+  if [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
+    color="white"
   else
-    echo "%{$fg_bold[blue]%}%~%{$reset_color%} "
+    color="blue"
+  fi
+
+  if [[ $(echo -n $PWD | wc -c) -gt ${_max_pwd_length} ]]; then
+    echo "%{$fg_bold[$color]%}%-2~ ... %3~%{$reset_color%} "
+  else
+    echo "%{$fg_bold[$color]%}%~%{$reset_color%} "
   fi
 }
 
-function user_info() {
-  if [[ ! -z "$SOBOLE_DEFAULT_USER" ]] && [[ "$USER" != "$SOBOLE_DEFAULT_USER" ]]; then
+function user_info {
+  # Shows user in the PROMPT if needed.
+  if [[ ! -z "$SOBOLE_DEFAULT_USER" ]] &&
+     [[ "$USER" != "$SOBOLE_DEFAULT_USER" ]]; then
     # This only works if `$SOBOLE_DEFAULT_USER` is not empty.
     # So, when you log in as other user, using `su` for example,
     # your shell tells you who you are. Otherwise it stays silent.
@@ -64,30 +105,45 @@ function current_venv {
 }
 
 # ----------------------------------------------------------------------------
-# Git specific colors and icons
+# VCS specific colors and icons
 # These settings defines how icons and text is displayed for
-#   `git`-related stuff
+# vcs-related stuff. We support: `git`, `hg` and `svn`
 # ----------------------------------------------------------------------------
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}✚%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[yellow]%}⚑%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%}✖%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}▴%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[cyan]%}§%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[black]%}⚓%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[white]%}✚%{$reset_color%}"
+
+ZSH_THEME_SVN_PROMPT_PREFIX="$ZSH_THEME_GIT_PROMPT_PREFIX"
+ZSH_THEME_SVN_PROMPT_SUFFIX="$ZSH_THEME_GIT_PROMPT_SUFFIX"
+ZSH_THEME_SVN_PROMPT_DIRTY="$ZSH_THEME_GIT_PROMPT_DIRTY"
+ZSH_THEME_SVN_PROMPT_CLEAN="$ZSH_THEME_GIT_PROMPT_CLEAN"
+ZSH_THEME_SVN_PROMPT_UNMERGED="$ZSH_THEME_GIT_PROMPT_UNMERGED"
+ZSH_THEME_SVN_PROMPT_ADDED="$ZSH_THEME_GIT_PROMPT_ADDED"
+
+ZSH_THEME_HG_PROMPT_PREFIX="$ZSH_THEME_GIT_PROMPT_PREFIX"
+ZSH_THEME_HG_PROMPT_SUFFIX="$ZSH_THEME_GIT_PROMPT_SUFFIX"
+ZSH_THEME_HG_PROMPT_DIRTY="$ZSH_THEME_GIT_PROMPT_DIRTY"
+ZSH_THEME_HG_PROMPT_CLEAN="$ZSH_THEME_GIT_PROMPT_CLEAN"
+ZSH_THEME_HG_PROMPT_UNMERGED="$ZSH_THEME_GIT_PROMPT_UNMERGED"
+ZSH_THEME_HG_PROMPT_ADDED="$ZSH_THEME_GIT_PROMPT_ADDED"
 
 # ----------------------------------------------------------------------------
 # `ls` colors
 # Made with: http://geoff.greer.fm/lscolors/
 # ----------------------------------------------------------------------------
 
-export LSCOLORS="exfxcxdxBxegedabagacab"
-export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;41"
+if [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
+  export LSCOLORS="ehfxcxdxbxegedabagacad"
+  export LS_COLORS="di=34;47:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+else
+  export LSCOLORS="exfxcxdxBxegedabagacab"
+  export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;41"
+fi
+
 export CLICOLOR=1
 
 # ----------------------------------------------------------------------------
@@ -103,7 +159,7 @@ export GREP_OPTIONS='--color=auto'
 # ----------------------------------------------------------------------------
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:descriptions' format "$fg[yellow]%B--- %d%b%{$reset_color%}"
+zstyle ':completion:*:descriptions' format "%B--- %d%b"
 
 # ----------------------------------------------------------------------------
 # zsh-syntax-highlighting tweaks
@@ -119,4 +175,8 @@ if [[ -z "$SOBOLE_DONOTTOUCH_HIGHLIGHTING" ]]; then
   # Disable strings highlighting:
   ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='none'
   ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='none'
+
+  if [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
+    ZSH_HIGHLIGHT_STYLES[path]='fg=white,underline'
+  fi
 fi

@@ -1,6 +1,8 @@
 # sobole
 
-Minimalistic `zsh` theme inspired by the old-fashioned hobbies. Works well on a light background.
+Minimalistic `zsh` theme inspired by the old-fashioned hobbies. No verbose gimmicks, no emoji, no spinners.
+
+Works best with [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting) installed.
 
 
 ## Showcase
@@ -38,7 +40,7 @@ Here's the [official docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Custom
 
 ## Features
 
-`virtualenv`, `git`, `ls`, `grep`, pretty error codes, different users, different color modes
+`virtualenv`, `git`, `ls`, `grep`, autocomplete colors, pretty error codes, different users, different color modes.
 
 
 ## Configuration
@@ -52,6 +54,8 @@ This theme supports several configuration options, which are provided as `env` v
 `$SOBOLE_DONOTTOUCH_HIGHLIGHTING` - tweaks `zsh-syntax-highlighting`. If it is installed, modifies string colors, some other minor things. Enabled by default. Set it to `true` if you do not want these tweaks. That's how it looks like:
 
 ![sobole-syntax-highlighting-showcase](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/highlighting-tweaks.png)
+
+`$SOBOLE_THEME_MODE` - sets the theme mode. There are two options available: `light` (set by default) and `dark`. Internally changes some colors when set to `dark` to give the best look on both color schemes.
 
 
 ## Fonts
