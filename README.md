@@ -1,8 +1,8 @@
 # sobole
 
-Minimalistic `zsh` theme inspired by the old-fashioned hobbies. No verbose gimmicks, no emoji, no spinners.
+Minimalistic `zsh` theme inspired by the old-fashioned hobbies. No verbose gimmicks, no emoji, no fidget spinners, and no other visual noise.
 
-Works best with [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting) installed.
+Works best with [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh) and [`zsh-syntax-highlighting`](https://github.com/zsh-users/zsh-syntax-highlighting) installed.
 
 
 ## Showcase
@@ -47,6 +47,10 @@ Here's the [official docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Custom
 
 This theme supports several configuration options, which are provided as `env` variables:
 
+`$SOBOLE_THEME_MODE` - sets the theme mode. There are two options available: `light` (set by default) and `dark`. Internally changes some colors when set to `dark` to give the best look on both color schemes.
+
+
+
 `$SOBOLE_DEFAULT_USER` - this options sets how the user is displayed. User is not displayed until it equals `$SOBOLE_DEFAULT_USER`, but imagine you executed `sudo su - admin`, that's how it will look like:
 
 ![sobole-user-showcase](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/user-showcase.png)
@@ -54,8 +58,6 @@ This theme supports several configuration options, which are provided as `env` v
 `$SOBOLE_DONOTTOUCH_HIGHLIGHTING` - tweaks `zsh-syntax-highlighting`. If it is installed, modifies string colors, some other minor things. Enabled by default. Set it to `true` if you do not want these tweaks. That's how it looks like:
 
 ![sobole-syntax-highlighting-showcase](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/highlighting-tweaks.png)
-
-`$SOBOLE_THEME_MODE` - sets the theme mode. There are two options available: `light` (set by default) and `dark`. Internally changes some colors when set to `dark` to give the best look on both color schemes.
 
 
 ## Fonts

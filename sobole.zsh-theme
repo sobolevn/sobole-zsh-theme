@@ -24,7 +24,9 @@ $(current_caret) '
 
 PROMPT2='. '
 
-RPROMPT='%{$(echotc UP 1)%} $(vcs_status) ${return_status}%{$(echotc DO 1)%}'
+_return_status="%(?..%{$fg[red]%}%? ⚡%{$reset_color%})"
+
+RPROMPT='%{$(echotc UP 1)%} $(vcs_status) ${_return_status}%{$(echotc DO 1)%}'
 
 function current_caret {
   # This function sets caret color and sign
@@ -51,11 +53,6 @@ function vcs_prompt_info {
 
 function vcs_status {
   git_prompt_status
-}
-
-function return_status {
-  # Sets the visible status for previous command.
-  echo "%(?..%{$fg[red]%}%? ⚡%{$reset_color%})"
 }
 
 function current_dir {
