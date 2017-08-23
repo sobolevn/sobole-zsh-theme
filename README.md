@@ -7,7 +7,13 @@ Works best with [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh) and [`z
 
 ## Showcase
 
-![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/showcase.gif)
+Light mode:
+
+![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/ls-colors.png)
+
+And dark mode:
+
+![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/dark-mode.png)
 
 There are multiple examples provided in the [showcases directory](/showcases).
 
