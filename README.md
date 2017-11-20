@@ -66,6 +66,20 @@ This theme supports several configuration options, which are provided as `env` v
 ![sobole-syntax-highlighting-showcase](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/highlighting-tweaks.png)
 
 
+## Indications
+
+`sobole` supports some icons (not many of them!) to indicate what is going on.
+Almost all of them are about `git` repository status. And one icon idicates that last command did not succeed.
+
+| Symbol |             Meaning             |
+|:------:|:-------------------------------:|
+|    ✗   | Repository is dirty             |
+|    ✔   | Repository is clean             |
+|    §   | Repository has unmerged changes |
+|    ✚   | Repository has added files      |
+|    ⚡   | Last command resulted in error  |
+
+
 ## Fonts
 
 You can choose any font that prints unicode symbols. In the examples `Menlo Regular` is used.
