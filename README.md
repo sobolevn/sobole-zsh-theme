@@ -13,7 +13,7 @@ Light mode (`SOBOLE_THEME_MODE=light`):
 
 And dark mode (`SOBOLE_THEME_MODE=dark`):
 
-![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/dark-mode.png)
+![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/ls-color-dark.png)
 
 There are multiple examples provided in the [showcases directory](/showcases).
 
@@ -87,6 +87,14 @@ You can choose any font that prints unicode symbols. In the examples `Menlo Regu
 You can install it with: `brew cask install font-menlo-for-powerline`. Or download it [here](https://github.com/hbin/top-programming-fonts/blob/master/Menlo-Regular.ttf).
 
 And then [configure](http://osxdaily.com/2011/09/02/use-any-font-in-the-mac-os-x-lion-terminal/) your terminal's `font` setting.
+
+
+## Using this theme
+
+Are you using `sobole`? Add link to your dotfiles!
+Currently using:
+
+- [sobolevn's dotfiles](https://github.com/sobolevn/dotfiles)
 
 
 ## References
