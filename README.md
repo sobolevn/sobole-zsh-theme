@@ -7,11 +7,11 @@ Works best with [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh) and [`z
 
 ## Showcase
 
-Light mode (`$SOBOLE_THEME_MODE=light`):
+Light mode (`SOBOLE_THEME_MODE=light`):
 
 ![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/ls-colors.png)
 
-And dark mode (`$SOBOLE_THEME_MODE=dark`):
+And dark mode (`SOBOLE_THEME_MODE=dark`):
 
 ![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/dark-mode.png)
 
