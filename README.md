@@ -15,7 +15,7 @@ And dark mode (`SOBOLE_THEME_MODE=dark`):
 
 ![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/ls-colors-dark.png)
 
-There are multiple examples provided in the [showcases directory](/showcases).
+There are more examples provided in the [showcases directory](/showcases).
 
 
 ## Installation
