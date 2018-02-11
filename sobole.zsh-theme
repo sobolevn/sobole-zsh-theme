@@ -10,14 +10,6 @@
 # These settings changes how your terminal prompt looks like
 # ----------------------------------------------------------------------------
 
-if [[ "$USER" == "root" ]]; then
-  CARETCOLOR="red"
-elif [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
-  CARETCOLOR="white"
-else
-  CARETCOLOR="black"
-fi
-
 PROMPT='
 $(current_venv)$(user_info)$(current_dir) $(vcs_prompt_info)
 $(current_caret) '
@@ -48,10 +40,12 @@ function current_caret {
 }
 
 function vcs_prompt_info {
+  # TODO: support hg and svn
   git_prompt_info
 }
 
 function vcs_status {
+  # TODO: support hg and svn
   git_prompt_status
 }
 
