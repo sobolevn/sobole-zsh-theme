@@ -10,6 +10,14 @@
 # These settings changes how your terminal prompt looks like
 # ----------------------------------------------------------------------------
 
+if [[ "$USER" == "root" ]]; then
+  CARETCOLOR="red"
+elif [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
+  CARETCOLOR="white"
+else
+  CARETCOLOR="black"
+fi
+
 PROMPT='
 $(current_venv)$(user_info)$(current_dir) $(vcs_prompt_info)
 $(current_caret) '
@@ -40,12 +48,10 @@ function current_caret {
 }
 
 function vcs_prompt_info {
-  # TODO: support hg and svn
   git_prompt_info
 }
 
 function vcs_status {
-  # TODO: support hg and svn
   git_prompt_status
 }
 
@@ -81,7 +87,7 @@ function user_info {
 
 # ----------------------------------------------------------------------------
 # virtualenv settings
-# These settings changes how virtualenv is displayed
+# These settings changes how virtualenv is displayed.
 # ----------------------------------------------------------------------------
 
 # Disable the standard prompt:
@@ -98,7 +104,7 @@ function current_venv {
 # ----------------------------------------------------------------------------
 # VCS specific colors and icons
 # These settings defines how icons and text is displayed for
-# vcs-related stuff. We support: `git`, `hg` and `svn`
+# vcs-related stuff. We support only `git`.
 # ----------------------------------------------------------------------------
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
@@ -108,33 +114,20 @@ ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg[green]%}✔%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[cyan]%}§%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}✚%{$reset_color%}"
 
-ZSH_THEME_SVN_PROMPT_PREFIX="$ZSH_THEME_GIT_PROMPT_PREFIX"
-ZSH_THEME_SVN_PROMPT_SUFFIX="$ZSH_THEME_GIT_PROMPT_SUFFIX"
-ZSH_THEME_SVN_PROMPT_DIRTY="$ZSH_THEME_GIT_PROMPT_DIRTY"
-ZSH_THEME_SVN_PROMPT_CLEAN="$ZSH_THEME_GIT_PROMPT_CLEAN"
-ZSH_THEME_SVN_PROMPT_UNMERGED="$ZSH_THEME_GIT_PROMPT_UNMERGED"
-ZSH_THEME_SVN_PROMPT_ADDED="$ZSH_THEME_GIT_PROMPT_ADDED"
-
-ZSH_THEME_HG_PROMPT_PREFIX="$ZSH_THEME_GIT_PROMPT_PREFIX"
-ZSH_THEME_HG_PROMPT_SUFFIX="$ZSH_THEME_GIT_PROMPT_SUFFIX"
-ZSH_THEME_HG_PROMPT_DIRTY="$ZSH_THEME_GIT_PROMPT_DIRTY"
-ZSH_THEME_HG_PROMPT_CLEAN="$ZSH_THEME_GIT_PROMPT_CLEAN"
-ZSH_THEME_HG_PROMPT_UNMERGED="$ZSH_THEME_GIT_PROMPT_UNMERGED"
-ZSH_THEME_HG_PROMPT_ADDED="$ZSH_THEME_GIT_PROMPT_ADDED"
-
 # ----------------------------------------------------------------------------
 # `ls` colors
 # Made with: http://geoff.greer.fm/lscolors/
 # ----------------------------------------------------------------------------
 
 if [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
-  export LSCOLORS="ehfxcxdxbxegedabagacad"
-  export LS_COLORS="di=34;47:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+  export LSCOLORS="gxfxcxdxbxegedabagacad"
+  export LS_COLORS="di=36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
 else
   export LSCOLORS="exfxcxdxBxegedabagacab"
   export LS_COLORS="di=34:ln=35:so=32:pi=33:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;41"
 fi
 
+# Turns on colors with default unix `ls` command:
 export CLICOLOR=1
 
 # ----------------------------------------------------------------------------
@@ -154,7 +147,7 @@ zstyle ':completion:*:descriptions' format "%B--- %d%b"
 # ----------------------------------------------------------------------------
 # zsh-syntax-highlighting tweaks
 # This setting works only unless `$SOBOLE_DONOTTOUCH_HIGHLIGHTING`
-# is set. Any value is fine. Set to `true`, for example.
+# is set. Any value is fine. For exmaple, you can set it to `true`.
 # Anyway, it will only take effect if `zsh-syntax-highlighting`
 # is installed, otherwise it does nothing.
 # ----------------------------------------------------------------------------
