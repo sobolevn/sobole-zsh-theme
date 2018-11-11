@@ -24,7 +24,7 @@ $(current_caret) '
 
 PROMPT2='. '
 
-_return_status="%(?..%{$fg[red]%}%? ⚡%{$reset_color%})"
+_return_status="%(?..%{$fg[red]%}%? ⚠️%{$reset_color%})"
 
 RPROMPT='%{$(echotc UP 1)%} $(vcs_status) ${_return_status}%{$(echotc DO 1)%}'
 

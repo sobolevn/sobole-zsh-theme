@@ -77,7 +77,7 @@ Almost all of them are about `git` repository status. And one icon idicates that
 |    ✔   | Repository is clean             |
 |    §   | Repository has unmerged changes |
 |    ✚   | Repository has added files      |
-|    ⚡   | Last command resulted in error  |
+|    ⚠️   | Last command resulted in error  |
 
 
 ## Fonts
