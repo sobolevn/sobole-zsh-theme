@@ -26,7 +26,7 @@ If you're using [`antigen`](https://github.com/zsh-users/antigen), you can test 
 
 ### zgen
 
-If you're using `zgen`, add them to your `init.zsh` with `zgen load sobolevn/sobole-zsh-theme`.
+If you're using `zgen`, add them to your `init.zsh` with `zgen load sobolevn/sobole-zsh-theme sobole`.
 
 ### Manual
 
