@@ -9,6 +9,8 @@ Works best with [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh) and [`z
 
 Light mode (`SOBOLE_THEME_MODE=light`):
 
+![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/hyper-light.png)
+
 ![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/ls-colors.png)
 
 And dark mode (`SOBOLE_THEME_MODE=dark`):
