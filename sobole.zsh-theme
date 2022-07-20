@@ -10,7 +10,7 @@
 # These settings changes how your terminal prompt looks like
 # ----------------------------------------------------------------------------
 
-f [[ "$USER" == "root" ]]; then
+if [[ "$USER" == "root" ]]; then
   CARETCOLOR="red"
 elif [[ "$SOBOLE_THEME_MODE" == "dark" ]]; then
   CARETCOLOR="white"
