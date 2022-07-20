@@ -1,0 +1,29 @@
+name: shellcheck
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'sobole.zsh-theme'
+  pull_request:
+    paths:
+      - 'sobole.zsh-theme'
+  workflow_dispatch:
+
+concurrency:
+  group: shellcheck-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ludeeus/action-shellcheck@1.1.0
+        env:
+          SHELLCHECK_OPTS: --shell zsh
+        with:
+          severity: style
+          check_together: 'yes'
+          additional_files: 'sobole.zsh-theme'
