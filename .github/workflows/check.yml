@@ -1,4 +1,4 @@
-name: shellcheck
+name: syntax check
 
 on:
   push:
@@ -12,18 +12,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ludeeus/action-shellcheck@1.1.0
-        env:
-          SHELLCHECK_OPTS: --shell bash
-        with:
-          severity: style
-          check_together: 'yes'
-          additional_files: 'sobole.zsh-theme'
-
   self-check:
     runs-on: macos-latest
     steps:
@@ -31,7 +19,6 @@ jobs:
       - name: Display the info
         run: echo "$ZSH_NAME" "$ZSH_VERSION"
         shell: zsh {0}
-        
       - name: Run self check
         run: zsh -n 'sobole.zsh-theme'
         shell: zsh {0}
