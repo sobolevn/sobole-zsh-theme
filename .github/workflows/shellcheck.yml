@@ -4,11 +4,7 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'sobole.zsh-theme'
   pull_request:
-    paths:
-      - 'sobole.zsh-theme'
   workflow_dispatch:
 
 concurrency:
