@@ -164,15 +164,15 @@ if [[ -z "$SOBOLE_DONOTTOUCH_HIGHLIGHTING" ]]; then
 fi
 
 preexec() {
-  if [[ $2 == "clear" ]]; then
-	  ADD_LINE_SEPARATOR="false"
+  if [[ "$2" == 'clear' ]]; then
+	  ADD_LINE_SEPARATOR='false'
   else
-    ADD_LINE_SEPARATOR="true"
+    ADD_LINE_SEPARATOR='true'
   fi
 }
 
 precmd() {
-  if [[ $ADD_LINE_SEPARATOR == "true" ]]; then
+  if [[ "$ADD_LINE_SEPARATOR" == 'true' ]]; then
     print
   fi
 }
