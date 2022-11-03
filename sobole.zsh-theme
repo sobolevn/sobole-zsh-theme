@@ -18,8 +18,7 @@ else
   CARETCOLOR="black"
 fi
 
-PROMPT='
-$(current_venv)$(user_info)$(current_dir) $(vcs_prompt_info)
+PROMPT='$(current_venv)$(user_info)$(current_dir) $(vcs_prompt_info)
 $(current_caret) '
 
 PROMPT2='. '
@@ -163,3 +162,17 @@ if [[ -z "$SOBOLE_DONOTTOUCH_HIGHLIGHTING" ]]; then
     ZSH_HIGHLIGHT_STYLES[path]='fg=white,underline'
   fi
 fi
+
+preexec() {
+  if [[ "$2" == 'clear' ]]; then
+	  ADD_LINE_SEPARATOR='false'
+  else
+    ADD_LINE_SEPARATOR='true'
+  fi
+}
+
+precmd() {
+  if [[ "$ADD_LINE_SEPARATOR" == 'true' ]]; then
+    print
+  fi
+}
