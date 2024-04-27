@@ -1,8 +1,9 @@
 name: Build Jekyll site
 
 on:
- push:
-   branches: ["main"]
+  push:
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -23,6 +24,7 @@ jobs:
           source: ./docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
