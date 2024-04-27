@@ -2,7 +2,8 @@ name: Build Jekyll site
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
