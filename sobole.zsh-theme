@@ -163,6 +163,12 @@ if [[ "$SOBOLE_SYNTAX_HIGHLIGHTING" != 'false' ]]; then
   if [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
     ZSH_HIGHLIGHT_STYLES[path]='fg=white,underline'
   fi
+
+  if [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
+    export SOBOLE_SYNTAX_THEME=Dracula
+  else
+    export SOBOLE_SYNTAX_THEME=GitHub
+  fi
 fi
 
 # ----------------------------------------------------------------------------
