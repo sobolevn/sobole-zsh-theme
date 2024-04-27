@@ -18,7 +18,7 @@ jobs:
   self-check:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Display the info
         run: echo "$ZSH_NAME" "$ZSH_VERSION"
         shell: zsh {0}
