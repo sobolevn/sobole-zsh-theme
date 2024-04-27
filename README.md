@@ -13,8 +13,6 @@ Light mode (`SOBOLE_THEME_MODE=light`):
 
 ![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/hyper-light.png)
 
-![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/ls-colors.png)
-
 And dark mode (`SOBOLE_THEME_MODE=dark`):
 
 ![sobole.zsh-theme](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/ls-colors-dark.png)
@@ -50,7 +48,7 @@ Here's the [official docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Custom
 
 ## Features
 
-`virtualenv`, `git`, `ls`, `grep`, autocomplete colors, pretty error codes, different users, different color modes.
+`virtualenv`, `git`, `ls`, `grep`, `fzf`, syntax highlight, autocomplete colors, pretty error codes, different users, different color modes.
 
 
 ## Configuration
