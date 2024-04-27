@@ -5,6 +5,15 @@
 # License: WTFPL
 # https://github.com/sobolevn/sobole-zsh-theme
 
+# Testing colors:
+#
+# for i in {0..255} ; do
+#   printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+#   if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+#     printf "\n";
+#   fi
+# done
+
 # ----------------------------------------------------------------------------
 # PROMPT settings
 # These settings changes how your terminal prompt looks like
@@ -18,14 +27,14 @@ else
   CARETCOLOR='black'
 fi
 
-PROMPT='$(current_venv)$(user_info)$(current_dir) $(vcs_prompt_info)
+PROMPT='$(current_venv)$(user_info)$(current_dir) $(git_prompt_info)
 $(current_caret) '
 
 PROMPT2='. '
 
 _return_status="%(?..%{$fg[red]%}%? ⚠️%{$reset_color%})"
 
-RPROMPT='%{$(echotc UP 1)%} $(vcs_status) ${_return_status}%{$(echotc DO 1)%}'
+RPROMPT='%{$(echotc UP 1)%} $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
 
 function current_caret {
   # This function sets caret color and sign
@@ -46,17 +55,9 @@ function current_caret {
   echo "%{$fg[$CARET_COLOR]%}$CARET_SIGN%{$reset_color%}"
 }
 
-function vcs_prompt_info {
-  git_prompt_info
-}
-
-function vcs_status {
-  git_prompt_status
-}
-
 function current_dir {
   # Settings up current directory and settings max width for it:
-  local _max_pwd_length="65"
+  local max_pwd_length="${SOBOLE_MAX_DIR_LEN:-65}"
   local color
 
   if [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
@@ -65,7 +66,7 @@ function current_dir {
     color='blue'
   fi
 
-  if [[ $(echo -n $PWD | wc -c) -gt ${_max_pwd_length} ]]; then
+  if [[ $(echo -n "$PWD" | wc -c) -gt "$max_pwd_length" ]]; then
     echo "%{$fg_bold[$color]%}%-2~ ... %3~%{$reset_color%} "
   else
     echo "%{$fg_bold[$color]%}%~%{$reset_color%} "
@@ -141,7 +142,8 @@ export GREP_COLOR='1;35'
 # ----------------------------------------------------------------------------
 
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*:descriptions' format '%B--- %d%b'
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
 
 # ----------------------------------------------------------------------------
 # zsh-syntax-highlighting tweaks
@@ -151,7 +153,7 @@ zstyle ':completion:*:descriptions' format '%B--- %d%b'
 # is installed, otherwise it does nothing.
 # ----------------------------------------------------------------------------
 
-if [[ -z "$SOBOLE_DONOTTOUCH_HIGHLIGHTING" ]]; then
+if [[ "$SOBOLE_SYNTAX_HIGHLIGHTING" != 'false' ]]; then
   typeset -A ZSH_HIGHLIGHT_STYLES
 
   # Disable strings highlighting:
@@ -163,16 +165,45 @@ if [[ -z "$SOBOLE_DONOTTOUCH_HIGHLIGHTING" ]]; then
   fi
 fi
 
+# ----------------------------------------------------------------------------
+# fzf and fzf-tab tweaks.
+# See:
+# - https://github.com/junegunn/fzf
+# - https://github.com/Aloxaf/fzf-tab
+# ----------------------------------------------------------------------------
+
+if [[ "$SOBOLE_FZF_THEME" != 'false' ]]; then
+  if (( $+commands[fzf] )); then
+    # This theme is the same for both light and dark themes:
+    export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS
+      --color=bg:-1,fg:-1,bg+:#dce7f2,fg+:bright-black
+      --color=hl:bright-blue,hl+:blue
+      --color=header:green,info:green,pointer:blue
+      --color=marker:bright-blue,prompt:black,spinner:blue"
+
+    # fzf-tab theme, setting the default color for suggestions (blue for me)
+    # Test all colors: `msgcat --color=test`
+    zstyle ':fzf-tab:*' default-color $'\x1b[30m'
+    zstyle ':fzf-tab:*' fzf-flags '--color=hl:#5f87af'
+  fi
+fi
+
+# ----------------------------------------------------------------------------
+# zsh hooks
+# ----------------------------------------------------------------------------
+
+_SOBOLE_ADD_LINE_SEPARATOR='true'
+
 preexec() {
   if [[ "$2" == 'clear' ]]; then
-    ADD_LINE_SEPARATOR='false'
+    _SOBOLE_ADD_LINE_SEPARATOR='false'
   else
-    ADD_LINE_SEPARATOR='true'
+    _SOBOLE_ADD_LINE_SEPARATOR='true'
   fi
 }
 
 precmd() {
-  if [[ "$ADD_LINE_SEPARATOR" == 'true' ]]; then
+  if [[ "$_SOBOLE_ADD_LINE_SEPARATOR" == 'true' ]]; then
     print
   fi
 }

@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+{% if page.title %}
+  <title>{{ page.title }} · {{ site.title }}</title>
+{% else %}
+  <title>{{ site.title }}</title>
+{% endif %}
+
+<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+
+<link rel="icon" href="{{ site.baseurl }}/assets/favicon.png">
+<link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/touch-icon.png">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/core.css">
+<link rel="canonical" href="{{ page.url | prepend: site.baseurl }}">

@@ -1,0 +1,12 @@
+# Site Settings
+
+baseurl: "/sobole-zsh-theme" # Base URL must end WITHOUT a slash
+title: "sobole - minimalistic zsh theme inspired by the old-fashioned hobbies"
+
+# Site Build
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+sass:
+  style: :compressed
