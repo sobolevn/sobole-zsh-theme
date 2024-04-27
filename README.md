@@ -50,7 +50,7 @@ Here's the [official docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Custom
 
 `virtualenv`, `git`, `ls`, `grep`, `fzf`, syntax highlight, autocomplete colors, pretty error codes, different users, different color modes.
 
-This theme also exports `$SOBOLE_SYNTAX_THEME` variable with either `'GitHub'` for light mode or `'Drakula'` to be used with tools like `bat` or `delta`.
+This theme also exports `$SOBOLE_SYNTAX_THEME` variable with either `'GitHub'` for light mode or `'Dracula'` to be used with tools like `bat` or `delta`.
 
 
 ## Configuration
