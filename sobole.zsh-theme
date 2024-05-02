@@ -190,7 +190,11 @@ if [[ "$SOBOLE_FZF_THEME" != 'false' ]]; then
     # fzf-tab theme, setting the default color for suggestions (blue for me)
     # Test all colors: `msgcat --color=test`
     zstyle ':fzf-tab:*' default-color $'\x1b[30m'
-    zstyle ':fzf-tab:*' fzf-flags '--color=hl:#5f87af'
+
+    # Matched text highlight
+    local fzf_flags
+    fzf_flags=( '--color=hl:bold:bright-blue' )
+    zstyle ':fzf-tab:*' fzf-flags $fzf_flags
   fi
 fi
 
