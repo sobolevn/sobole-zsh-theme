@@ -59,7 +59,7 @@ function __sobole::current_dir {
   fi
 
   if [[ $(echo -n "$PWD" | wc -c) -gt "$max_pwd_length" ]]; then
-    echo "%{$fg_bold[$color]%}%-2~ ... %3~%{$reset_color%} "
+    echo "%{$fg_bold[$color]%}%-1~ ... %2~%{$reset_color%} "
   else
     echo "%{$fg_bold[$color]%}%~%{$reset_color%} "
   fi
