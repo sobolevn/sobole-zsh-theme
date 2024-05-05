@@ -19,14 +19,6 @@
 # These settings changes how your terminal prompt looks like
 # ----------------------------------------------------------------------------
 
-if [[ "$USER" == 'root' ]] || [[ "$(id -u "$USER")" == 0 ]]; then
-  CARETCOLOR="red"
-elif [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
-  CARETCOLOR='white'
-else
-  CARETCOLOR='black'
-fi
-
 PROMPT='$(current_venv)$(user_info)$(current_dir) $(git_prompt_info)
 $(current_caret) '
 
