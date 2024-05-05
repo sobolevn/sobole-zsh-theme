@@ -19,8 +19,8 @@
 # These settings changes how your terminal prompt looks like
 # ----------------------------------------------------------------------------
 
-PROMPT='$(current_venv)$(user_info)$(current_dir) $(git_prompt_info)
-$(current_caret) '
+PROMPT='$(__sobole::current_venv)$(__sobole::user_info)$(__sobole::current_dir) $(git_prompt_info)
+$(__sobole::current_caret) '
 
 PROMPT2='. '
 
@@ -28,7 +28,7 @@ _return_status="%(?..%{$fg[red]%}%? ⚠️%{$reset_color%})"
 
 RPROMPT='%{$(echotc UP 1)%} $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
 
-function current_caret {
+function __sobole::current_caret {
   # This function sets caret color and sign
   # based on theme and privileges.
   if [[ "$USER" == 'root' ]] || [[ "$(id -u "$USER")" == 0 ]]; then
@@ -47,7 +47,7 @@ function current_caret {
   echo "%{$fg[$CARET_COLOR]%}$CARET_SIGN%{$reset_color%}"
 }
 
-function current_dir {
+function __sobole::current_dir {
   # Settings up current directory and settings max width for it:
   local max_pwd_length="${SOBOLE_MAX_DIR_LEN:-65}"
   local color
@@ -65,7 +65,7 @@ function current_dir {
   fi
 }
 
-function user_info {
+function __sobole::user_info {
   # Shows user in the PROMPT if needed.
   if [[ ! -z "$SOBOLE_DEFAULT_USER" ]] &&
      [[ "$USER" != "$SOBOLE_DEFAULT_USER" ]]; then
@@ -85,7 +85,7 @@ function user_info {
 # Disable the standard prompt:
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-function current_venv {
+function __sobole::current_venv {
   if [[ ! -z "$VIRTUAL_ENV" ]]; then
     # Show this info only if virtualenv is activated:
     local dir=$(basename "$VIRTUAL_ENV")
@@ -185,7 +185,7 @@ if [[ "$SOBOLE_FZF_THEME" != 'false' ]]; then
 
     # Matched text highlight
     local fzf_flags
-    fzf_flags=( '--color=hl:bright-blue' )
+    fzf_flags=( '--color=hl:bold:bright-blue' )
     zstyle ':fzf-tab:*' fzf-flags $fzf_flags
   fi
 fi
@@ -194,7 +194,7 @@ fi
 # zsh hooks
 # ----------------------------------------------------------------------------
 
-_SOBOLE_ADD_LINE_SEPARATOR='true'
+_SOBOLE_ADD_LINE_SEPARATOR='false'
 
 preexec() {
   if [[ "$2" == 'clear' ]]; then
