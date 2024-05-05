@@ -195,8 +195,13 @@ fi
 # ----------------------------------------------------------------------------
 
 if [[ "$SOBOLE_LESS_THEME" != 'false' ]]; then
-  export LESS_TERMCAP_mb="$(printf '\e[1;34m')"
-  export LESS_TERMCAP_md="$(printf '\e[1;34m')"
+  if [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
+    export LESS_TERMCAP_mb="$(printf '\e[1;35m')"
+    export LESS_TERMCAP_md="$(printf '\e[1;35m')"
+  else
+    export LESS_TERMCAP_mb="$(printf '\e[1;34m')"
+    export LESS_TERMCAP_md="$(printf '\e[1;34m')"
+  fi
   export LESS_TERMCAP_me="$(printf '\e[0m')"
   export LESS_TERMCAP_se=$(printf '\e[0m')
   export LESS_TERMCAP_so=$(printf '\e[30m')

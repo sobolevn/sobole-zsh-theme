@@ -73,7 +73,11 @@ If this setting is set to `'false'`, then `$SOBOLE_SYNTAX_THEME` is not exported
 
 `$SOBOLE_FZF_THEME` - tweaks `fzf` theme if it installed. Set it to `'false'` if you do not want these tweaks. That's how it looks like:
 
-![sobole-syntax-highlighting-showcase](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/fzf-tweaks.png)
+![sobole-fzf-tweaks](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/fzf-tweaks.png)
+
+`$SOBOLE_LESS_THEME` - tweaks `less` pager. Set it to `'false'` if you do not want these tweaks. That's how it looks like:
+
+![sobole-less-tweaks](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/less-tweaks.png)
 
 
 ## Indications
