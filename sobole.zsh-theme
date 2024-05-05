@@ -28,7 +28,7 @@ _return_status="%(?..%{$fg[red]%}%? ⚠️%{$reset_color%})"
 
 RPROMPT='%{$(echotc UP 1)%} $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
 
-function __sobole::current_caret {
+__sobole::current_caret () {
   # This function sets caret color and sign
   # based on theme and privileges.
   if [[ "$USER" == 'root' ]] || [[ "$(id -u "$USER")" == 0 ]]; then
@@ -47,7 +47,7 @@ function __sobole::current_caret {
   echo "%{$fg[$CARET_COLOR]%}$CARET_SIGN%{$reset_color%}"
 }
 
-function __sobole::current_dir {
+__sobole::current_dir () {
   # Settings up current directory and settings max width for it:
   local max_pwd_length="${SOBOLE_MAX_DIR_LEN:-65}"
   local color
@@ -65,7 +65,7 @@ function __sobole::current_dir {
   fi
 }
 
-function __sobole::user_info {
+__sobole::user_info () {
   # Shows user in the PROMPT if needed.
   if [[ ! -z "$SOBOLE_DEFAULT_USER" ]] &&
      [[ "$USER" != "$SOBOLE_DEFAULT_USER" ]]; then
@@ -85,7 +85,7 @@ function __sobole::user_info {
 # Disable the standard prompt:
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-function __sobole::current_venv {
+__sobole::current_venv () {
   if [[ ! -z "$VIRTUAL_ENV" ]]; then
     # Show this info only if virtualenv is activated:
     local dir=$(basename "$VIRTUAL_ENV")
@@ -215,16 +215,22 @@ fi
 
 _SOBOLE_ADD_LINE_SEPARATOR='false'
 
-preexec() {
-  if [[ "$2" == 'clear' ]]; then
+__sobole::preexec () {
+  if [[ $# -eq 0 ]] || [[ "$2" == 'clear' ]]; then
     _SOBOLE_ADD_LINE_SEPARATOR='false'
   else
     _SOBOLE_ADD_LINE_SEPARATOR='true'
   fi
 }
 
-precmd() {
-  if [[ "$_SOBOLE_ADD_LINE_SEPARATOR" == 'true' ]]; then
+__sobole::precmd () {
+  local cmd_result="$?"
+  if [[ "$_SOBOLE_ADD_LINE_SEPARATOR" == 'true' ]] ||
+     [[ "$cmd_result" -ne 0 ]]; then
     print
   fi
 }
+
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec __sobole::preexec
+add-zsh-hook precmd __sobole::precmd
