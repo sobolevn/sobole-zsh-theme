@@ -19,7 +19,7 @@
 # These settings changes how your terminal prompt looks like
 # ----------------------------------------------------------------------------
 
-if [[ "$USER" == "root" ]]; then
+if [[ "$USER" == 'root' ]] || [[ "$(id -u "$USER")" == 0 ]]; then
   CARETCOLOR="red"
 elif [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
   CARETCOLOR='white'
@@ -39,9 +39,9 @@ RPROMPT='%{$(echotc UP 1)%} $(git_prompt_status) ${_return_status}%{$(echotc DO 
 function current_caret {
   # This function sets caret color and sign
   # based on theme and privileges.
-  if [[ "$USER" == 'root' ]]; then
+  if [[ "$USER" == 'root' ]] || [[ "$(id -u "$USER")" == 0 ]]; then
     CARET_COLOR='red'
-    CARET_SIGN='$'
+    CARET_SIGN='#'
   else
     CARET_SIGN='»'
 
