@@ -191,6 +191,20 @@ if [[ "$SOBOLE_FZF_THEME" != 'false' ]]; then
 fi
 
 # ----------------------------------------------------------------------------
+# less (and man) colors
+# ----------------------------------------------------------------------------
+
+if [[ "$SOBOLE_LESS_THEME" != 'false' ]]; then
+  export LESS_TERMCAP_mb="$(printf '\e[1;34m')"
+  export LESS_TERMCAP_md="$(printf '\e[1;34m')"
+  export LESS_TERMCAP_me="$(printf '\e[0m')"
+  export LESS_TERMCAP_se=$(printf '\e[0m')
+  export LESS_TERMCAP_so=$(printf '\e[30m')
+  export LESS_TERMCAP_ue=$(printf '\e[0m')
+  export LESS_TERMCAP_us=$(printf '\e[1;32m')
+fi
+
+# ----------------------------------------------------------------------------
 # zsh hooks
 # ----------------------------------------------------------------------------
 
