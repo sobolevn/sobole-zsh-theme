@@ -185,7 +185,7 @@ if [[ "$SOBOLE_FZF_THEME" != 'false' ]]; then
 
     # Matched text highlight
     local fzf_flags
-    fzf_flags=( '--color=hl:bold:bright-blue' )
+    fzf_flags=( '--color=hl:bright-blue' )
     zstyle ':fzf-tab:*' fzf-flags $fzf_flags
   fi
 fi
