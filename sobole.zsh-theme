@@ -26,7 +26,7 @@ PROMPT2='. '
 
 _return_status="%(?..%{$fg[red]%}%? ⚠️%{$reset_color%})"
 
-RPROMPT='%{$(echotc UP 1)%} $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
+RPROMPT='%{$(echotc UP 1)%} ${_return_status}%{$(echotc DO 1)%}'
 
 __sobole::current_caret () {
   # This function sets caret color and sign
