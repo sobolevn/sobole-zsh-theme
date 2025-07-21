@@ -86,8 +86,8 @@ __sobole::user_info () {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 __sobole::current_venv () {
-  // Despite the fact that `_OLD_VIRTUAL_PATH` is undocumented, it is always
-  // set in `activate` script. It is needed to fix `vscode` terminal.
+  # Despite the fact that `_OLD_VIRTUAL_PATH` is undocumented, it is always
+  # set in `activate` script. It is needed to fix `vscode` terminal.
   if [[ ! -z "$VIRTUAL_ENV" ]] && [[ ! -z "$_OLD_VIRTUAL_PATH" ]]; then
     # Show this info only if virtualenv is activated:
     local dir=$(basename "$VIRTUAL_ENV")
