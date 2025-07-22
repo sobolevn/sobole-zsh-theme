@@ -143,8 +143,8 @@ zstyle ':completion:*:descriptions' format '[%d]'
 # zsh-syntax-highlighting tweaks
 # This setting works only unless `$SOBOLE_DONOTTOUCH_HIGHLIGHTING`
 # is set. Any value is fine. For exmaple, you can set it to `true`.
-# Anyway, it will only take effect if `zsh-syntax-highlighting`
-# is installed, otherwise it does nothing.
+# Anyway, it will only take effect if `zsh-syntax-highlighting` and `bat`
+# are installed, otherwise it does nothing.
 # ----------------------------------------------------------------------------
 
 if [[ "$SOBOLE_SYNTAX_HIGHLIGHTING" != 'false' ]]; then
@@ -159,9 +159,15 @@ if [[ "$SOBOLE_SYNTAX_HIGHLIGHTING" != 'false' ]]; then
   fi
 
   if [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
-    export SOBOLE_SYNTAX_THEME=Dracula
+    export SOBOLE_SYNTAX_THEME='base16-256'
   else
-    export SOBOLE_SYNTAX_THEME=GitHub
+    export SOBOLE_SYNTAX_THEME='GitHub'
+  fi
+
+  # If `bat` is installed, then change the theme for it:
+  # https://github.com/sharkdp/bat
+  if (( $+commands[bat] )); then
+    export BAT_THEME="$SOBOLE_SYNTAX_THEME"
   fi
 fi
 
