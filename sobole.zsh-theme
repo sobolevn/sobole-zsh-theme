@@ -140,11 +140,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:descriptions' format '[%d]'
 
 # ----------------------------------------------------------------------------
-# zsh-syntax-highlighting tweaks
-# This setting works only unless `$SOBOLE_DONOTTOUCH_HIGHLIGHTING`
-# is set. Any value is fine. For exmaple, you can set it to `true`.
-# Anyway, it will only take effect if `zsh-syntax-highlighting` and `bat`
-# are installed, otherwise it does nothing.
+# zsh-syntax-highlighting, fzf, and bat tweaks
+# This setting works only if `$SOBOLE_SYNTAX_HIGHLIGHTING` is not false.
+# Each tool is only modified if installed.
 # ----------------------------------------------------------------------------
 
 if [[ "$SOBOLE_SYNTAX_HIGHLIGHTING" != 'false' ]]; then
@@ -161,7 +159,7 @@ if [[ "$SOBOLE_SYNTAX_HIGHLIGHTING" != 'false' ]]; then
   if [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
     export SOBOLE_SYNTAX_THEME='base16-256'
   else
-    export SOBOLE_SYNTAX_THEME='GitHub'
+    export SOBOLE_SYNTAX_THEME='ansi'
   fi
 
   # If `bat` is installed, then change the theme for it:
