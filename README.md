@@ -50,7 +50,9 @@ Here's the [official docs](https://github.com/robbyrussell/oh-my-zsh/wiki/Custom
 
 `virtualenv`, `git`, `ls`, `grep`, `fzf`, syntax highlight, autocomplete colors, pretty error codes, different users, different color modes.
 
-This theme also exports `$SOBOLE_SYNTAX_THEME` variable with either `'GitHub'` for light mode or `'Dracula'` to be used with tools like `bat` or `delta`.
+This theme also exports `$SOBOLE_SYNTAX_THEME` variable with a different theme for light and dark modes
+to be used with tools like `bat` or `delta`. You can customize it with
+`$SOBOLE_SYNTAX_THEME_LIGHT` and `$SOBOLE_SYNTAX_THEME_DARK` variables serve as overrides.
 
 
 ## Configuration
@@ -70,6 +72,8 @@ This theme supports several configuration options, which are provided as `env` v
 ![sobole-syntax-highlighting-showcase](https://raw.githubusercontent.com/sobolevn/sobole-zsh-theme/master/showcases/highlighting-tweaks.png)
 
 If this setting is set to `'false'`, then `$SOBOLE_SYNTAX_THEME` is not exported.
+Otherwise, it will set a default syntax theme that can be changed
+via `$SOBOLE_SYNTAX_THEME_LIGHT` and `$SOBOLE_SYNTAX_THEME_DARK`.
 
 `$SOBOLE_FZF_THEME` - tweaks `fzf` theme if it installed. Set it to `'false'` if you do not want these tweaks. That's how it looks like:
 
