@@ -157,9 +157,9 @@ if [[ "$SOBOLE_SYNTAX_HIGHLIGHTING" != 'false' ]]; then
   fi
 
   if [[ "$SOBOLE_THEME_MODE" == 'dark' ]]; then
-    export SOBOLE_SYNTAX_THEME='base16-256'
+    export SOBOLE_SYNTAX_THEME="${SOBOLE_SYNTAX_THEME_LIGHT:-base16-256}"
   else
-    export SOBOLE_SYNTAX_THEME='GitHub'
+    export SOBOLE_SYNTAX_THEME="${SOBOLE_SYNTAX_THEME_LIGHT:-Monokai Extended Light}"
   fi
 
   # If `bat` is installed, then change the theme for it:
